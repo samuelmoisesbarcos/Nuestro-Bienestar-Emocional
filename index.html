@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Bienestar Emocional</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #cdeffd, #fef6d8);
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        header {
+            background-color: #5ab9ea;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        section {
+            background-color: white;
+            margin: 20px;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #5ab9ea;
+        }
+
+        button {
+            background-color: #5ab9ea;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #3a9fd9;
+        }
+
+        select, textarea {
+            padding: 8px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .rutina {
+            background-color: #f1f9ff;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            background-color: #5ab9ea;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Un espacio para sentirte mejor</h1>
+    <p>A veces solo necesitamos parar un momento y escucharnos</p>
+</header>
+
+<section>
+    <h2>¿Cómo te sientes ahora?</h2>
+    <p>No hay respuestas buenas o malas. Elige lo que más se acerque a cómo estás hoy.</p>
+
+    <select id="estado">
+        <option value="">-- Elige una opción --</option>
+        <option value="ansioso">Ansioso/a</option>
+        <option value="cansado">Cansado/a</option>
+        <option value="triste">Triste</option>
+        <option value="feliz">Feliz</option>
+    </select>
+
+    <button onclick="mostrarRutina()">Ver orientación</button>
+
+    <div id="resultado" class="rutina"></div>
+</section>
+
+<section>
+    <h2>Algunas ideas que podrían ayudarte</h2>
+    <div id="consejos" class="rutina">
+        <p>Cuando elijas cómo te sientes, aquí aparecerán algunas sugerencias.</p>
+    </div>
+</section>
+
+<section>
+    <h2>Un lugar para desahogarte</h2>
+    <p>Escribe lo que tengas en la cabeza. Nadie te va a juzgar.</p>
+
+    <textarea id="mensajeDesahogo" rows="4" placeholder="Puedes escribir lo que quieras..."></textarea>
+    <button onclick="guardarDesahogo()">Guardar lo que escribí</button>
+
+    <div id="respuestaDesahogo" class="rutina"></div>
+
+    <h3>Lo que has escrito antes</h3>
+    <ul id="listaDesahogos"></ul>
+</section>
+
+<section>
+    <h2>Pequeñas formas de relajarte</h2>
+    <ul>
+        <li>Respirar lento por unos minutos</li>
+        <li>Escuchar música tranquila</li>
+        <li>Alejarte un rato del celular</li>
+        <li>Tomarte un descanso sin sentir culpa</li>
+    </ul>
+</section>
+
+<footer>
+    <p>Recuerda: no estás solo. Estaremos nosotros cuando lo necesites, ahora y siempre.</p>
+</footer>
+
+<script>
+function mostrarRutina() {
+    let estado = document.getElementById("estado").value;
+    let resultado = document.getElementById("resultado");
+    let consejos = document.getElementById("consejos");
+
+    if (estado === "ansioso") {
+        resultado.innerHTML = `
+        <h3>Cuando te sientes ansioso/a</h3>
+        <p>A veces la mente va más rápido que nosotros.</p>
+        <p>Esto puede pasar por:</p>
+        <ul>
+            <li>Muchas preocupaciones juntas</li>
+            <li>Presión del estudio o problemas personales</li>
+            <li>Miedo a lo que pueda pasar</li>
+        </ul>
+        <p>Algo que podrías intentar:</p>
+        <p>Respira profundo y despacio. No tienes que resolver todo ahora.</p>
+        `;
+        consejos.innerHTML = `
+        <ul>
+            <li>Haz una pausa</li>
+            <li>Habla con alguien de confianza</li>
+            <li>Escribe lo que te preocupa</li>
+        </ul>
+        `;
+    } 
+    else if (estado === "cansado") {
+        resultado.innerHTML = `
+        <h3>Cuando te sientes cansado/a</h3>
+        <p>Estar cansado no significa que seas débil.</p>
+        <p>Puede deberse a:</p>
+        <ul>
+            <li>Poco descanso</li>
+            <li>Mucho tiempo en pantallas</li>
+            <li>Demasiadas responsabilidades</li>
+        </ul>
+        <p>Una posible solución:</p>
+        <p>Date permiso de descansar. Tu cuerpo también necesita pausa.</p>
+        `;
+        consejos.innerHTML = `
+        <ul>
+            <li>Duerme un poco más</li>
+            <li>Haz pausas durante el día</li>
+            <li>Toma agua</li>
+        </ul>
+        `;
+    } 
+    else if (estado === "triste") {
+        resultado.innerHTML = `
+        <h3>Cuando te sientes triste</h3>
+        <p>No siempre sabemos por qué estamos así, y está bien.</p>
+        <p>Esto puede pasar cuando:</p>
+        <ul>
+            <li>Algo te duele y no lo dices</li>
+            <li>Te sientes solo/a</li>
+            <li>Has pasado por algo difícil</li>
+        </ul>
+        <p>Algo que podría ayudar:</p>
+        <p>No te guardes todo. Hablar o escribir puede aliviar más de lo que parece.</p>
+        `;
+        consejos.innerHTML = `
+        <ul>
+            <li>Escribe cómo te sientes</li>
+            <li>Busca compañía</li>
+            <li>Haz algo que antes te hacía bien</li>
+        </ul>
+        `;
+    } 
+    else if (estado === "feliz") {
+        resultado.innerHTML = `
+        <h3>Cuando te sientes feliz</h3>
+        <p>Disfrútalo. Estos momentos también importan.</p>
+        `;
+        consejos.innerHTML = `
+        <ul>
+            <li>Agradece el momento</li>
+            <li>Compártelo con alguien</li>
+            <li>Guarda este recuerdo</li>
+        </ul>
+        `;
+    } 
+    else {
+        resultado.innerHTML = "Elige una opción para continuar.";
+        consejos.innerHTML = "<p>Aquí aparecerán algunas ideas para ti.</p>";
+    }
+}
+
+function guardarDesahogo() {
+    let mensaje = document.getElementById("mensajeDesahogo").value;
+    let respuesta = document.getElementById("respuestaDesahogo");
+
+    if (mensaje.trim() === "") {
+        respuesta.innerHTML = "Escribe algo antes de guardar.";
+        return;
+    }
+
+    let desahogos = JSON.parse(localStorage.getItem("desahogos")) || [];
+    desahogos.push(mensaje);
+    localStorage.setItem("desahogos", JSON.stringify(desahogos));
+
+    document.getElementById("mensajeDesahogo").value = "";
+    respuesta.innerHTML = "Gracias por escribir. Guardar esto también es cuidarte.";
+
+    mostrarDesahogos();
+}
+
+function mostrarDesahogos() {
+    let lista = document.getElementById("listaDesahogos");
+    lista.innerHTML = "";
+
+    let desahogos = JSON.parse(localStorage.getItem("desahogos")) || [];
+
+    desahogos.forEach(texto => {
+        let li = document.createElement("li");
+        li.textContent = texto;
+        lista.appendChild(li);
+    });
+}
+
+mostrarDesahogos();
+</script>
+
+</body>
+</html>
+</html>
