@@ -1,264 +1,234 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Bienestar Emocional</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #cdeffd, #fef6d8);
-            margin: 0;
-            padding: 0;
-            color: #333;
-        }
+<meta charset="UTF-8">
+<title>Bienestar Emocional</title>
 
-        header {
-            background-color: #5ab9ea;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #cdeffd, #fef6d8);
+    margin: 0;
+    padding: 0;
+}
 
-        section {
-            background-color: white;
-            margin: 20px;
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-        }
+header {
+    background-color: #5ab9ea;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
 
-        h2 {
-            color: #5ab9ea;
-        }
+section {
+    background: white;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
 
-        button {
-            background-color: #5ab9ea;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 10px;
-            cursor: pointer;
-            margin-top: 10px;
-        }
+h2 {
+    color: #5ab9ea;
+}
 
-        button:hover {
-            background-color: #3a9fd9;
-        }
+select, textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    margin-top: 10px;
+}
 
-        select, textarea {
-            padding: 8px;
-            border-radius: 8px;
-            border: 1px solid #ccc;
-            width: 100%;
-            margin-top: 10px;
-        }
+button {
+    margin-top: 15px;
+    padding: 10px 15px;
+    background-color: #5ab9ea;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
 
-        .rutina {
-            background-color: #f1f9ff;
-            padding: 15px;
-            border-radius: 10px;
-            margin-top: 15px;
-        }
+button:hover {
+    background-color: #3a9fd9;
+}
 
-        footer {
-            text-align: center;
-            padding: 15px;
-            background-color: #5ab9ea;
-            color: white;
-        }
-    </style>
+.rutina {
+    background-color: #f1f9ff;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 15px;
+}
+
+.video {
+    margin-top: 20px;
+    display: none;
+}
+
+footer {
+    background-color: #5ab9ea;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+</style>
 </head>
 
 <body>
 
 <header>
-    <h1>Un espacio para sentirte mejor</h1>
-    <p>A veces solo necesitamos parar un momento y escucharnos</p>
+<h1>Un espacio seguro para ti</h1>
+<p>Todo lo que sientes es válido</p>
 </header>
 
 <section>
-    <h2>¿Cómo te sientes ahora?</h2>
-    <p>No hay respuestas buenas o malas. Elige lo que más se acerque a cómo estás hoy.</p>
+<h2>¿Cómo te sientes hoy?</h2>
 
-    <select id="estado">
-        <option value="">-- Elige una opción --</option>
-        <option value="ansioso">Ansioso/a</option>
-        <option value="cansado">Cansado/a</option>
-        <option value="triste">Triste</option>
-        <option value="feliz">Feliz</option>
-    </select>
+<select id="estado" onchange="mostrarContenido()">
+<option value="">Selecciona tu estado de ánimo</option>
+<option value="triste">Tristeza</option>
+<option value="ansioso">Ansiedad</option>
+<option value="cansado">Cansancio</option>
+<option value="feliz">Felicidad</option>
+</select>
 
-    <button onclick="mostrarRutina()">Ver orientación</button>
+<div id="consejos" class="rutina"></div>
 
-    <div id="resultado" class="rutina"></div>
+<!-- VIDEOS TIKTOK -->
+
+<div id="video-triste" class="video">
+<iframe src="https://www.tiktok.com/embed/7600929509658955024"
+width="100%" height="500" frameborder="0" allowfullscreen></iframe>
+</div>
+
+<div id="video-ansioso" class="video">
+<iframe src="https://www.tiktok.com/embed/7276416482139983109"
+width="100%" height="500" frameborder="0" allowfullscreen></iframe>
+</div>
+
+<div id="video-cansado" class="video">
+<iframe src="https://www.tiktok.com/embed/7600982914016218369"
+width="100%" height="500" frameborder="0" allowfullscreen></iframe>
+</div>
+
+<div id="video-feliz" class="video">
+<iframe src="https://www.tiktok.com/embed/7520780620407065878"
+width="100%" height="500" frameborder="0" allowfullscreen></iframe>
+</div>
+
 </section>
 
+<!-- SECCIÓN DE DESAHOGO -->
 <section>
-    <h2>Algunas ideas que podrían ayudarte</h2>
-    <div id="consejos" class="rutina">
-        <p>Cuando elijas cómo te sientes, aquí aparecerán algunas sugerencias.</p>
-    </div>
-</section>
+<h2>Un espacio para soltar</h2>
+<p>
+Ven, te invito a que nos cuentes qué es lo que sucede.  
+Exprésate sin miedo, sin juicios.  
+A veces escribirlo ya es un alivio enorme y te hará sentir mucho mejor.
+</p>
 
-<section>
-    <h2>Un lugar para desahogarte</h2>
-    <p>Escribe lo que tengas en la cabeza. Nadie te va a juzgar.</p>
+<textarea id="desahogo" rows="6" placeholder="Este espacio es solo tuyo..."></textarea>
 
-    <textarea id="mensajeDesahogo" rows="4" placeholder="Puedes escribir lo que quieras..."></textarea>
-    <button onclick="guardarDesahogo()">Guardar lo que escribí</button>
+<button onclick="guardarDesahogo()">Guardar lo que siento</button>
 
-    <div id="respuestaDesahogo" class="rutina"></div>
-
-    <h3>Lo que has escrito antes</h3>
-    <ul id="listaDesahogos"></ul>
-</section>
-
-<section>
-    <h2>Pequeñas formas de relajarte</h2>
-    <ul>
-        <li>Respirar lento por unos minutos</li>
-        <li>Escuchar música tranquila</li>
-        <li>Alejarte un rato del celular</li>
-        <li>Tomarte un descanso sin sentir culpa</li>
-    </ul>
-</section>
-
-<section>
-    <h2>Un momento para respirar</h2>
-    <p>Si necesitas una pausa, este video puede acompañarte.</p>
-
-    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 15px;">
-        <iframe 
-            src="https://www.youtube.com/embed/zChNJE9svPs"
-            title="Video de bienestar emocional"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
-        </iframe>
-    </div>
+<p id="mensajeGuardado" style="margin-top:10px; color:#5ab9ea;"></p>
 </section>
 
 <footer>
-    <p>Recuerda: no estás solo. Estaremos nosotros cuando lo necesites, ahora y siempre.</p>
+<p>Gracias por confiar en este espacio 💙</p>
 </footer>
 
 <script>
-function mostrarRutina() {
-    let estado = document.getElementById("estado").value;
-    let resultado = document.getElementById("resultado");
-    let consejos = document.getElementById("consejos");
+function mostrarContenido() {
+    const estado = document.getElementById("estado").value;
+    const consejos = document.getElementById("consejos");
 
-    if (estado === "ansioso") {
-        resultado.innerHTML = `
-        <h3>Cuando te sientes ansioso/a</h3>
-        <p>A veces la mente va más rápido que nosotros.</p>
-        <ul>
-            <li>Muchas preocupaciones juntas</li>
-            <li>Presión del estudio o problemas personales</li>
-            <li>Miedo a lo que pueda pasar</li>
-        </ul>
-        <p>Respira profundo y despacio. No tienes que resolver todo ahora.</p>
-        `;
+    document.querySelectorAll(".video").forEach(v => v.style.display = "none");
+
+    if (estado === "triste") {
         consejos.innerHTML = `
+        <strong>💙 Tristeza</strong><br><br>
+        <u>Posibles causas:</u>
         <ul>
-            <li>Haz una pausa</li>
-            <li>Habla con alguien de confianza</li>
-            <li>Escribe lo que te preocupa</li>
+            <li>Pérdidas, decepciones o cambios recientes</li>
+            <li>Cansancio emocional acumulado</li>
+            <li>Sentirse solo o incomprendido</li>
         </ul>
-        `;
-    } 
+        <u>Qué puede ayudarte:</u>
+        <ul>
+            <li>Hablar con alguien de confianza</li>
+            <li>Permitirte llorar y descansar</li>
+            <li>Hacer algo pequeño que te dé calma</li>
+        </ul>`;
+        document.getElementById("video-triste").style.display = "block";
+    }
+
+    else if (estado === "ansioso") {
+        consejos.innerHTML = `
+        <strong>🌿 Ansiedad</strong><br><br>
+        <u>Posibles causas:</u>
+        <ul>
+            <li>Sobrecarga de responsabilidades</li>
+            <li>Miedo al futuro o a perder el control</li>
+            <li>Estrés prolongado</li>
+        </ul>
+        <u>Qué puede ayudarte:</u>
+        <ul>
+            <li>Respiraciones lentas y profundas</li>
+            <li>Enfocarte solo en el presente</li>
+            <li>Reducir estímulos por un momento</li>
+        </ul>`;
+        document.getElementById("video-ansioso").style.display = "block";
+    }
+
     else if (estado === "cansado") {
-        resultado.innerHTML = `
-        <h3>Cuando te sientes cansado/a</h3>
-        <p>Estar cansado no significa que seas débil.</p>
-        <ul>
-            <li>Poco descanso</li>
-            <li>Mucho tiempo en pantallas</li>
-            <li>Demasiadas responsabilidades</li>
-        </ul>
-        <p>Date permiso de descansar.</p>
-        `;
         consejos.innerHTML = `
+        <strong>😴 Cansancio</strong><br><br>
+        <u>Posibles causas:</u>
         <ul>
-            <li>Duerme un poco más</li>
-            <li>Haz pausas</li>
-            <li>Toma agua</li>
+            <li>Falta de descanso físico o mental</li>
+            <li>Exigirte más de lo que puedes dar</li>
+            <li>No escucharte a tiempo</li>
         </ul>
-        `;
-    } 
-    else if (estado === "triste") {
-        resultado.innerHTML = `
-        <h3>Cuando te sientes triste</h3>
-        <p>No siempre sabemos por qué estamos así, y está bien.</p>
+        <u>Qué puede ayudarte:</u>
         <ul>
-            <li>Algo te duele</li>
-            <li>Te sientes solo/a</li>
-            <li>Pasaste por algo difícil</li>
-        </ul>
-        <p>Hablar o escribir puede aliviar.</p>
-        `;
-        consejos.innerHTML = `
-        <ul>
-            <li>Escribe cómo te sientes</li>
-            <li>Busca compañía</li>
-            <li>Haz algo que te guste</li>
-        </ul>
-        `;
-    } 
+            <li>Tomar pausas sin culpa</li>
+            <li>Dormir mejor o desconectarte un rato</li>
+            <li>Decir “no” cuando sea necesario</li>
+        </ul>`;
+        document.getElementById("video-cansado").style.display = "block";
+    }
+
     else if (estado === "feliz") {
-        resultado.innerHTML = `
-        <h3>Cuando te sientes feliz</h3>
-        <p>Disfrútalo. Estos momentos también importan.</p>
-        `;
         consejos.innerHTML = `
+        <strong>✨ Felicidad</strong><br><br>
+        <u>Qué puede estar pasando:</u>
         <ul>
-            <li>Agradece</li>
-            <li>Compártelo</li>
-            <li>Guárdalo en tu memoria</li>
+            <li>Te sientes en calma contigo</li>
+            <li>Algo bueno ocurrió o estás agradecido</li>
         </ul>
-        `;
-    } 
-    else {
-        resultado.innerHTML = "Elige una opción para continuar.";
-        consejos.innerHTML = "<p>Aquí aparecerán algunas ideas para ti.</p>";
+        <u>Cómo sostener este estado:</u>
+        <ul>
+            <li>Disfrutar sin culpa</li>
+            <li>Guardar este momento en tu memoria</li>
+            <li>Compartirlo con alguien especial</li>
+        </ul>`;
+        document.getElementById("video-feliz").style.display = "block";
     }
 }
 
 function guardarDesahogo() {
-    let mensaje = document.getElementById("mensajeDesahogo").value;
-    let respuesta = document.getElementById("respuestaDesahogo");
-
-    if (mensaje.trim() === "") {
-        respuesta.innerHTML = "Escribe algo antes de guardar.";
-        return;
+    const texto = document.getElementById("desahogo").value;
+    if (texto.trim() !== "") {
+        localStorage.setItem("desahogo_usuario", texto);
+        document.getElementById("mensajeGuardado").innerText =
+        "Lo que escribiste quedó guardado. Gracias por expresarte 💙";
     }
-
-    let desahogos = JSON.parse(localStorage.getItem("desahogos")) || [];
-    desahogos.push(mensaje);
-    localStorage.setItem("desahogos", JSON.stringify(desahogos));
-
-    document.getElementById("mensajeDesahogo").value = "";
-    respuesta.innerHTML = "Gracias por escribir. Guardar esto también es cuidarte.";
-
-    mostrarDesahogos();
 }
-
-function mostrarDesahogos() {
-    let lista = document.getElementById("listaDesahogos");
-    lista.innerHTML = "";
-
-    let desahogos = JSON.parse(localStorage.getItem("desahogos")) || [];
-
-    desahogos.forEach(texto => {
-        let li = document.createElement("li");
-        li.textContent = texto;
-        lista.appendChild(li);
-    });
-}
-
-mostrarDesahogos();
 </script>
 
 </body>
 </html>
+
+
+
